@@ -1,7 +1,7 @@
 //
 //    FILE: RunningMedian.cpp
 //  AUTHOR: Rob.Tillaart at gmail.com
-// VERSION: 0.2.0
+// VERSION: 0.2.1
 // PURPOSE: RunningMedian library for Arduino
 //
 // HISTORY:
@@ -22,7 +22,7 @@
 // 0.1.14 - 2017-07-26 revert double to float - issue #33
 // 0.1.15 - 2018-08-24 make runningMedian Configurable #110
 // 0.2.0    2020-04-16 refactor.
-//
+// 0.2.1    2020-06-19 fix library.json
 
 #include "RunningMedian.h"
 
