@@ -1,9 +1,9 @@
 //
-//    FILE: RunningMedian.ino
-//  AUTHOR: Rob Tillaart ( kudos to Sembazuru)
+//    FILE: RunningMedianQuantileTest.ino
+//  AUTHOR: f-s ( derived from Rob Tillaart )
 // VERSION: 0.1.2
-// PURPOSE: demo basic usage
-//    DATE: 2013-10-17
+// PURPOSE: demo basic quantile usage
+//    DATE: 2020-09-02
 //     URL: https://github.com/RobTillaart/RunningMedian
 //
 
