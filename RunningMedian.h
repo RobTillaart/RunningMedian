@@ -15,7 +15,7 @@
 
 // prepare for dynamic version
 // not tested ==> use at own risk :)
-// #define RUNNING_MEDIAN_USE_MALLOC
+#define RUNNING_MEDIAN_USE_MALLOC
 
 
 // should at least be 5 to be practical,
@@ -38,6 +38,9 @@ public:
   void add(const float value);
   // returns the median == middle element
   float getMedian();
+  
+  // returns the Quantile
+  float getQuantile(const float q);
 
   // returns average of the values in the internal buffer
   float getAverage();

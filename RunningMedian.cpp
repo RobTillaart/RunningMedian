@@ -81,6 +81,22 @@ float RunningMedian::getMedian()
   return (_ar[_p[_cnt / 2]] + _ar[_p[_cnt / 2 - 1]]) / 2;
 }
 
+float RunningMedian::getQuantile(float q)
+{
+  if (_cnt == 0) return NAN;
+
+  if (_sorted == false) sort();
+  
+	const float id = (_cnt - 1) * q;
+	const uint8_t lo = floor(id);
+	const uint8_t hi = ceil(id);
+	const float qs = _ar[_p[lo]];
+	const float h  = (id - lo);
+
+	return (1.0 - h) * qs + h * _ar[_p[hi]];
+
+}
+
 float RunningMedian::getAverage()
 {
   if (_cnt == 0) return NAN;
