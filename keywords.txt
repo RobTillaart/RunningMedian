@@ -7,6 +7,7 @@ RunningMedian	KEYWORD1
 add	KEYWORD2
 clear	KEYWORD2
 getMedian	KEYWORD2
+getQuantile KEYWORD2
 getAverage	KEYWORD2
 getHighest	KEYWORD2
 getLowest	KEYWORD2
