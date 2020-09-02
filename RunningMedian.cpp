@@ -84,6 +84,8 @@ float RunningMedian::getMedian()
 float RunningMedian::getQuantile(float q)
 {
   if (_cnt == 0) return NAN;
+  
+  if ((q < 0) || (q > 1)) return NAN;
 
   if (_sorted == false) sort();
   
