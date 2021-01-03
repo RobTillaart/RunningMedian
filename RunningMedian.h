@@ -3,15 +3,16 @@
 //    FILE: RunningMedian.h
 //  AUTHOR: Rob dot Tillaart at gmail dot com
 // PURPOSE: RunningMedian library for Arduino
-// VERSION: 0.2.1
+// VERSION: 0.2.2
 //     URL: https://github.com/RobTillaart/RunningMedian
 //     URL: http://arduino.cc/playground/Main/RunningMedian
 // HISTORY: See RunningMedian.cpp
 //
 
+
 #include "Arduino.h"
 
-#define RUNNING_MEDIAN_VERSION "0.2.1"
+#define RUNNING_MEDIAN_VERSION        (F("0.2.2"))
 
 // prepare for dynamic version
 // not tested ==> use at own risk :)
@@ -22,7 +23,11 @@
 // odd sizes results in a 'real' middle element and will be a bit faster.
 // even sizes takes the average of the two middle elements as median
 #define MEDIAN_MIN_SIZE     5
+
+// allow compile time (command line) setting of MEDIAN_MAX_SIZE
+#ifndef MEDIAN_MAX_SIZE
 #define MEDIAN_MAX_SIZE     19
+#endif
 
 
 class RunningMedian

@@ -1,28 +1,30 @@
 //
 //    FILE: RunningMedian.cpp
 //  AUTHOR: Rob.Tillaart at gmail.com
-// VERSION: 0.2.1
+// VERSION: 0.2.2
 // PURPOSE: RunningMedian library for Arduino
 //
-// HISTORY:
-// 0.1.00 - 2011-02-16 initial version
-// 0.1.01 - 2011-02-22 added remarks from CodingBadly
-// 0.1.02 - 2012-03-15 added
-// 0.1.03 - 2013-09-30 added _sorted flag, minor refactor
-// 0.1.04 - 2013-10-17 added getAverage(uint8_t) - kudo's to Sembazuru
-// 0.1.05 - 2013-10-18 fixed bug in sort; removes default constructor; dynamic memory
-// 0.1.06 - 2013-10-19 faster sort, dynamic arrays, replaced sorted float array with indirection array
-// 0.1.07 - 2013-10-19 add correct median if _cnt is even.
-// 0.1.08 - 2013-10-20 add getElement(), add getSottedElement() add predict()
-// 0.1.09 - 2014-11-25 float to double (support ARM)
-// 0.1.10 - 2015-03-07 fix clear
-// 0.1.11 - 2015-03-29 undo 0.1.10 fix clear
-// 0.1.12 - 2015-07-12 refactor constructor + const
-// 0.1.13 - 2015-10-30 fix getElement(n) - kudos to Gdunge
-// 0.1.14 - 2017-07-26 revert double to float - issue #33
-// 0.1.15 - 2018-08-24 make runningMedian Configurable #110
-// 0.2.0    2020-04-16 refactor.
-// 0.2.1    2020-06-19 fix library.json
+//  HISTORY:
+//  0.1.00  2011-02-16  initial version
+//  0.1.01  2011-02-22  added remarks from CodingBadly
+//  0.1.02  2012-03-15  added
+//  0.1.03  2013-09-30  added _sorted flag, minor refactor
+//  0.1.04  2013-10-17  added getAverage(uint8_t) - kudo's to Sembazuru
+//  0.1.05  2013-10-18  fixed bug in sort; removes default constructor; dynamic memory
+//  0.1.06  2013-10-19  faster sort, dynamic arrays, replaced sorted float array with indirection array
+//  0.1.07  2013-10-19  add correct median if _cnt is even.
+//  0.1.08  2013-10-20  add getElement(), add getSottedElement() add predict()
+//  0.1.09  2014-11-25  float to double (support ARM)
+//  0.1.10  2015-03-07  fix clear
+//  0.1.11  2015-03-29  undo 0.1.10 fix clear
+//  0.1.12  2015-07-12  refactor constructor + const
+//  0.1.13  2015-10-30  fix getElement(n) - kudos to Gdunge
+//  0.1.14  2017-07-26  revert double to float - issue #33
+//  0.1.15  2018-08-24  make runningMedian Configurable #110
+//  0.2.0   2020-04-16  refactor.
+//  0.2.1   2020-06-19  fix library.json
+//  0.2.2   2021-01-03  add Arduino-CI + unit tests
+
 
 #include "RunningMedian.h"
 
