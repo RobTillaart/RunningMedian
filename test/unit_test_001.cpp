@@ -111,8 +111,8 @@ unittest(test_big)
   assertEqual(50, samples.getSize());
   assertEqual(50, samples.getCount());
 
-  assertEqualFloat(0, samples.getMedian(), 0.0001);
-  assertEqualFloat(0, samples.getAverage(), 0.0001);
+  assertEqualFloat(34.5, samples.getMedian(), 0.0001);
+  assertEqualFloat(34.5, samples.getAverage(), 0.0001);
   assertEqualFloat(10, samples.getLowest(), 0.0001);
   assertEqualFloat(59, samples.getHighest(), 0.0001);
 
