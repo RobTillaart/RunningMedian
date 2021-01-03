@@ -76,19 +76,19 @@ unittest(test_basic_add)
     assertEqual(cnt, samples.getCount());
   }
   assertEqual(5, samples.getSize());
-  assertEqualFloat(20. samples.getMedian(), 0.0001);
-  assertEqualFloat(20. samples.getAverage(), 0.0001);
-  assertEqualFloat(00. samples.getLowest(), 0.0001);
-  assertEqualFloat(40. samples.getHighest(), 0.0001);
+  assertEqualFloat(20, samples.getMedian(), 0.0001);
+  assertEqualFloat(20, samples.getAverage(), 0.0001);
+  assertEqualFloat(00, samples.getLowest(), 0.0001);
+  assertEqualFloat(40, samples.getHighest(), 0.0001);
   
   samples.add(100);  // 6th element
   assertEqual(5, samples.getSize());
   assertEqual(5, samples.getCount());
 
-  assertEqualFloat(0. samples.getMedian(), 0.0001);
-  assertEqualFloat(0. samples.getAverage(), 0.0001);
-  assertEqualFloat(0. samples.getLowest(), 0.0001);
-  assertEqualFloat(0. samples.getHighest(), 0.0001);
+  assertEqualFloat(0, samples.getMedian(), 0.0001);
+  assertEqualFloat(0, samples.getAverage(), 0.0001);
+  assertEqualFloat(0, samples.getLowest(), 0.0001);
+  assertEqualFloat(0, samples.getHighest(), 0.0001);
   
   samples.clear();
   assertEqual(0, samples.getSize());
