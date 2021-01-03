@@ -25,6 +25,8 @@
 //  0.2.1   2020-06-19  fix library.json
 //  0.2.2   2021-01-03  add Arduino-CI + unit tests
 
+//  0.3.0   malloc memory as storage
+
 
 #include "RunningMedian.h"
 
