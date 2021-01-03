@@ -30,11 +30,12 @@
 
 RunningMedian::RunningMedian(const uint8_t size)
 {
-  _size = constrain(size, MEDIAN_MIN_SIZE, MEDIAN_MAX_SIZE);
-
+  _size = size;
 #ifdef RUNNING_MEDIAN_USE_MALLOC
   _ar = (float *) malloc(_size * sizeof(float));
   _p = (uint8_t *) malloc(_size * sizeof(uint8_t));
+#else
+  _size = constrain(_size, MEDIAN_MIN_SIZE, MEDIAN_MAX_SIZE);
 #endif
 
   clear();

@@ -16,8 +16,9 @@
 
 // prepare for dynamic version
 // not tested ==> use at own risk :)
-#define RUNNING_MEDIAN_USE_MALLOC
-
+#ifndef RUNNING_MEDIAN_USE_MALLOC
+#define RUNNING_MEDIAN_USE_MALLOC   true
+#endif
 
 // should at least be 5 to be practical,
 // odd sizes results in a 'real' middle element and will be a bit faster.
@@ -38,29 +39,29 @@ public:
   ~RunningMedian();
 
   // resets internal buffer and var
-  void clear();
+  void    clear();
   // adds a new value to internal buffer, optionally replacing the oldest element.
-  void add(const float value);
+  void    add(const float value);
   // returns the median == middle element
-  float getMedian();
+  float   getMedian();
   
   // returns the Quantile
-  float getQuantile(const float q);
+  float   getQuantile(const float q);
 
   // returns average of the values in the internal buffer
-  float getAverage();
+  float   getAverage();
   // returns average of the middle nMedian values, removes noise from outliers
-  float getAverage(uint8_t nMedian);
+  float   getAverage(uint8_t nMedian);
 
-  float getHighest() { return getSortedElement(_cnt - 1); };
-  float getLowest()  { return getSortedElement(0); };
+  float   getHighest() { return getSortedElement(_cnt - 1); };
+  float   getLowest()  { return getSortedElement(0); };
 
   // get n'th element from the values in time order
-  float getElement(const uint8_t n);
+  float   getElement(const uint8_t n);
   // get n'th element from the values in size order
-  float getSortedElement(const uint8_t n);
+  float   getSortedElement(const uint8_t n);
   // predict the max change of median after n additions
-  float predict(const uint8_t n);
+  float   predict(const uint8_t n);
 
   uint8_t getSize() { return _size; };
   // returns current used elements, getCount() <= getSize()
