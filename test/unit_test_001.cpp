@@ -96,6 +96,32 @@ unittest(test_basic_add)
 }
 
 
+unittest(test_big)
+{
+  fprintf(stderr, "VERSION: %s\n", RUNNING_MEDIAN_VERSION);
+
+  RunningMedian samples = RunningMedian(100);
+  assertEqual(100, samples.getSize());
+  assertEqual(0, samples.getCount());
+
+  for (int i = 0; i < 110; i++)
+  {
+    samples.add(i);
+  }
+  assertEqual(100, samples.getSize());
+  assertEqual(100, samples.getCount());
+
+  assertEqualFloat(59.5, samples.getMedian(), 0.0001);
+  assertEqualFloat(59.5, samples.getAverage(), 0.0001);
+  assertEqualFloat(10, samples.getLowest(), 0.0001);
+  assertEqualFloat(109, samples.getHighest(), 0.0001);
+
+  samples.clear();
+  assertEqual(100, samples.getSize());
+  assertEqual(0, samples.getCount());
+}
+
+
 unittest_main()
 
 // --------
