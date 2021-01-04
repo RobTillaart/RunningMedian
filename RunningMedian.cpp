@@ -33,9 +33,7 @@
 RunningMedian::RunningMedian(const uint8_t size)
 {
   _size = constrain(size, MEDIAN_MIN_SIZE, MEDIAN_MAX_SIZE);
-
 #ifdef RUNNING_MEDIAN_USE_MALLOC
-  _size = constrain(_size, MEDIAN_MIN_SIZE, 250);
   _values = (float *) malloc(_size * sizeof(float));
   _sortIdx  = (uint8_t *) malloc(_size * sizeof(uint8_t));
 #endif
