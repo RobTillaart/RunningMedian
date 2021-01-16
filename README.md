@@ -3,9 +3,11 @@
 [![License: MIT](https://img.shields.io/badge/license-MIT-green.svg)](https://github.com/RobTillaart/RunningMedian/blob/master/LICENSE)
 [![GitHub release](https://img.shields.io/github/release/RobTillaart/RunningMedian.svg?maxAge=3600)](https://github.com/RobTillaart/RunningMedian/releases)
 
+
 # RunningMedian
 
 Arduino library to determine the running median by means of a circular buffer.
+
 
 ## Description
 
@@ -33,6 +35,8 @@ and is currently set to 19. This value is reasonable for most applications.
 This define can be changed in the .h file or overruled compiletime.
 Be aware that the library will consume more memory as it allocates 
 **MEDIAN_MAX_SIZE** elements internally.
+
+With version 0.3.1 the size can be set to 255.
 
 
 ## Interface
