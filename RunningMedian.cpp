@@ -1,7 +1,7 @@
 //
 //    FILE: RunningMedian.cpp
 //  AUTHOR: Rob Tillaart
-// VERSION: 0.3.0
+// VERSION: 0.3.1
 // PURPOSE: RunningMedian library for Arduino
 //
 //  HISTORY:
@@ -25,6 +25,7 @@
 //  0.2.1   2020-06-19  fix library.json
 //  0.2.2   2021-01-03  add Arduino-CI + unit tests
 //  0.3.0   2021-01-04  malloc memory as default storage
+//  0.3.1   2021-01-16  Changed size parameter to 255 max
 
 
 #include "RunningMedian.h"
@@ -32,7 +33,10 @@
 
 RunningMedian::RunningMedian(const uint8_t size)
 {
-  _size = constrain(size, MEDIAN_MIN_SIZE, MEDIAN_MAX_SIZE);
+  _size = size;
+  if (_size < MEDIAN_MIN_SIZE) _size = MEDIAN_MIN_SIZE;
+  // if (_size > MEDIAN_MAX_SIZE) _size = MEDIAN_MAX_SIZE;
+
 #ifdef RUNNING_MEDIAN_USE_MALLOC
   _values = (float *) malloc(_size * sizeof(float));
   _sortIdx  = (uint8_t *) malloc(_size * sizeof(uint8_t));
