@@ -56,7 +56,7 @@ void loop()
   if (count == 255)
   {
     count++;
-    for (int i = 0; i < 255; i++}
+    for (int i = 0; i < 255; i++)
     {
       Serial.println(samples.getElement(i));
     }
