@@ -69,6 +69,7 @@ public:
   uint8_t getSize()    { return _size; };
   // returns current used elements, getCount() <= getSize()
   uint8_t getCount()   { return _count; };
+  bool    isFull()     { return (_count == _size); }
 
 
 protected:
