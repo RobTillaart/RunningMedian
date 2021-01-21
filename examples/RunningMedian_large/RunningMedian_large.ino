@@ -30,10 +30,10 @@ void setup()
 
 void loop()
 {
-  if (count <255)
+  if (count < 255)
   {
     start = micros();
-    samples.add(count);
+    samples.add(256 - count);
     dur1 = micros() - start;
     start = micros();
     count = samples.getCount();
@@ -41,7 +41,7 @@ void loop()
     start = micros();
     float value = samples.getMedian();
     dur3 = micros() - start;
-    
+
     Serial.print(count);
     Serial.print('\t');
     Serial.print(dur1);
@@ -53,14 +53,14 @@ void loop()
     Serial.println();
   }
 
-  if (count == 255)
-  {
-    count++;
-    for (int i = 0; i < 255; i++)
-    {
-      Serial.println(samples.getElement(i));
-    }
-  }
+  //  if (count == 255)
+  //  {
+  //    count++;
+  //    for (int i = 0; i < 255; i++)
+  //    {
+  //      Serial.println(samples.getSortedElement(i));
+  //    }
+  //  }
 }
 
 // -- END OF FILE --
