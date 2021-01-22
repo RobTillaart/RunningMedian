@@ -53,14 +53,14 @@ void loop()
     Serial.println();
   }
 
-  //  if (count == 255)
-  //  {
-  //    count++;
-  //    for (int i = 0; i < 255; i++)
-  //    {
-  //      Serial.println(samples.getSortedElement(i));
-  //    }
-  //  }
+  if (count == 255)
+  {
+    for (int i = 0; i < 255; i++)
+    {
+      Serial.println(samples.getSortedElement(i));
+    }
+  }
+  count++;
 }
 
 // -- END OF FILE --
