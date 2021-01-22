@@ -1,7 +1,7 @@
 //
 //    FILE: RunningMedian.cpp
 //  AUTHOR: Rob Tillaart
-// VERSION: 0.3.2
+// VERSION: 0.3.3
 // PURPOSE: RunningMedian library for Arduino
 //
 //  HISTORY:
@@ -28,6 +28,7 @@
 //  0.3.1   2021-01-16  Changed size parameter to 255 max
 //  0.3.2   2021-01-21  replaced bubbleSort by insertionSort 
 //                      --> better performance for large arrays.
+//  0.3.3   2021-01-22  better insertionSort (+ cleanup test code)
 
 
 #include "RunningMedian.h"
@@ -190,77 +191,15 @@ void RunningMedian::sort()
   for (uint16_t i = 1; i < _count; i++)
   {
     uint16_t z = i;
-    while ((z > 0) && (_values[_sortIdx[z]] < _values[_sortIdx[z - 1]]))
+    uint16_t temp = _sortIdx[z];
+    while ((z > 0) && (_values[temp] < _values[_sortIdx[z - 1]]))
     {
-      uint16_t temp = _sortIdx[z];
       _sortIdx[z] = _sortIdx[z - 1];
-      _sortIdx[z - 1] = temp;
       z--;
     }
+    _sortIdx[z] = temp;
   }
   _sorted = true;
 }
-
-
-/////////////////////////////////////////////////////////////////////
-//
-// Bubble sort - original
-// 
-// void RunningMedian::sort()
-// {
-  // // bubble sort with flag - worse for large values
-  // for (uint8_t i = 0; i < _count - 1; i++)
-  // {
-    // bool flag = true;
-    // for (uint8_t j = 1; j < _count - i; j++)
-    // {
-      // if (_values[_sortIdx[j - 1]] > _values[_sortIdx[j]])
-      // {
-        // uint8_t t = _sortIdx[j - 1];
-        // _sortIdx[j - 1] = _sortIdx[j];
-        // _sortIdx[j] = t;
-        // flag = false;
-      // }
-    // }
-    // if (flag) break;
-  // }
-  // _sorted = true;
-// }
-
-
-/////////////////////////////////////////////////////////////////////
-//
-// Combsort - faster than bubble but slower than insertSort
-// 
-// void RunningMedian::sort()
-// {
-  // // COMBSORT - way faster than bubble sort but slower than insertSort
-  // uint16_t i, j;
-  // uint16_t gap;
-  // uint8_t swapped = 1;
-  // uint16_t temp;
-
-  // gap = _count;
-  // while (gap > 1 || swapped == 1)
-  // {
-    // if (gap > 1)
-    // {
-      // gap = gap * 10/13;
-      // if (gap == 9 || gap == 10) gap = 11;
-    // }
-    // swapped = 0;
-    // for (i = 0, j = gap; j < _count; i++, j++)
-    // {
-      // if (_values[_sortIdx[j]] < _values[_sortIdx[i]])
-      // {
-        // temp = _sortIdx[j];
-        // _sortIdx[j] = _sortIdx[i];
-        // _sortIdx[i] = temp;
-        // swapped = 1;
-      // }
-    // }
-  // }
-// }
-
 
 // -- END OF FILE --
