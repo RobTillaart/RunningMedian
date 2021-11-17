@@ -7,9 +7,11 @@
 //     URL: https://github.com/RobTillaart/RunningMedian
 //
 
+
 #include <RunningMedian.h>
 
 RunningMedian samples = RunningMedian(5);
+
 
 void setup()
 {
@@ -18,10 +20,12 @@ void setup()
   Serial.println(RUNNING_MEDIAN_VERSION);
 }
 
+
 void loop()
 {
   test1();
 }
+
 
 void test1()
 {
@@ -47,4 +51,6 @@ void test1()
   delay(100);
 }
 
+
 // -- END OF FILE --
+

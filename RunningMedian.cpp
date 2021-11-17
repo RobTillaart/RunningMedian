@@ -95,19 +95,19 @@ float RunningMedian::getMedian()
 }
 
 
-float RunningMedian::getQuantile(float q)
+float RunningMedian::getQuantile(float quantile)
 {
   if (_count == 0) return NAN;
   
-  if ((q < 0) || (q > 1)) return NAN;
+  if ((quantile < 0) || (quantile > 1)) return NAN;
 
   if (_sorted == false) sort();
   
-  const float id = (_count - 1) * q;
-  const uint8_t lo = floor(id);
-  const uint8_t hi = ceil(id);
-  const float qs = _values[_sortIdx[lo]];
-  const float h  = (id - lo);
+  const float index = (_count - 1) * quantile;
+  const uint8_t lo  = floor(index);
+  const uint8_t hi  = ceil(index);
+  const float qs    = _values[_sortIdx[lo]];
+  const float h     = (index - lo);
 
   return (1.0 - h) * qs + h * _values[_sortIdx[hi]];
 }

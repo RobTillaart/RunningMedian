@@ -41,7 +41,7 @@ public:
   explicit RunningMedian(const uint8_t size);
   ~RunningMedian();
 
-  // resets internal buffer and var
+  // resets internal buffer and variables
   void    clear();
   // adds a new value to internal buffer, optionally replacing the oldest element.
   void    add(const float value);
@@ -49,7 +49,7 @@ public:
   float   getMedian();
   
   // returns the Quantile
-  float   getQuantile(const float q);
+  float   getQuantile(const float quantile);
 
   // returns average of the values in the internal buffer
   float   getAverage();
