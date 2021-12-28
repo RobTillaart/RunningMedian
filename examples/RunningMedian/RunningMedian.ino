@@ -1,11 +1,9 @@
 //
 //    FILE: RunningMedian.ino
 //  AUTHOR: Rob Tillaart ( kudos to Sembazuru)
-// VERSION: 0.1.2
 // PURPOSE: demo basic usage
 //    DATE: 2013-10-17
 //     URL: https://github.com/RobTillaart/RunningMedian
-//
 
 
 #include <RunningMedian.h>

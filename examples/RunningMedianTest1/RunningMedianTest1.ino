@@ -1,11 +1,9 @@
 //
 //    FILE: runningMedianTest1.ino
 //  AUTHOR: Rob Tillaart
-// VERSION: 0.1.1
 // PURPOSE: test functionality
 //    DATE: 2013-10-28
 //     URL: https://github.com/RobTillaart/RunningMedian
-//
 
 
 #include <RunningMedian.h>
@@ -13,7 +11,7 @@
 
 // 50 consecutive samples from Sharp distance sensor model GP2Y0A710K0F while stationary.
 const int sourceData[] =
-{ 
+{
   300, 299, 296, 343, 307, 304, 303, 305, 300, 340,
   308, 305, 300, 304, 311, 304, 300, 300, 304, 304,
   284, 319, 306, 304, 300, 302, 305, 310, 306, 304,
@@ -168,5 +166,5 @@ void test1()
 }
 
 
-// -- END OF FILE -- 
+// -- END OF FILE --
 
