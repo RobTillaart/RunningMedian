@@ -1,7 +1,7 @@
 //
 //    FILE: RunningMedian.cpp
 //  AUTHOR: Rob Tillaart
-// VERSION: 0.3.3
+// VERSION: 0.3.4
 // PURPOSE: RunningMedian library for Arduino
 //
 //  HISTORY:
@@ -26,9 +26,10 @@
 //  0.2.2   2021-01-03  add Arduino-CI + unit tests
 //  0.3.0   2021-01-04  malloc memory as default storage
 //  0.3.1   2021-01-16  Changed size parameter to 255 max
-//  0.3.2   2021-01-21  replaced bubbleSort by insertionSort 
+//  0.3.2   2021-01-21  replaced bubbleSort by insertionSort
 //                      --> better performance for large arrays.
-//  0.3.3   2021-01-22  better insertionSort (+ cleanup test code)
+//  0.3.3   2021-01-22  better insertionSort (+ clean up test code)
+//  0.3.4   2021-12-28  update library.json, readme, license, minor edits
 
 
 #include "RunningMedian.h"
@@ -98,11 +99,11 @@ float RunningMedian::getMedian()
 float RunningMedian::getQuantile(float quantile)
 {
   if (_count == 0) return NAN;
-  
+
   if ((quantile < 0) || (quantile > 1)) return NAN;
 
   if (_sorted == false) sort();
-  
+
   const float index = (_count - 1) * quantile;
   const uint8_t lo  = floor(index);
   const uint8_t hi  = ceil(index);
@@ -187,7 +188,7 @@ float RunningMedian::predict(const uint8_t n)
 
 void RunningMedian::sort()
 {
-  // insertSort 
+  // insertSort
   for (uint16_t i = 1; i < _count; i++)
   {
     uint16_t z = i;
@@ -202,4 +203,6 @@ void RunningMedian::sort()
   _sorted = true;
 }
 
+
 // -- END OF FILE --
+

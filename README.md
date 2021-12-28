@@ -87,5 +87,5 @@ See examples
 
 - improve documentation
 - check for optimizations
+- separate releaseNotes.md
 - 
-
