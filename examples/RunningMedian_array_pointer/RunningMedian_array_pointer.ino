@@ -1,5 +1,5 @@
 //
-//    FILE: RunningMedian.ino
+//    FILE: RunningMedian_array_pointer.ino
 //  AUTHOR: Rob Tillaart
 // PURPOSE: array of runningMedian objects
 //    DATE: 2022-06-21
@@ -8,12 +8,8 @@
 
 #include <RunningMedian.h>
 
-RunningMedian a(5);
-RunningMedian b(10);
-RunningMedian c(15);
-RunningMedian d(20);
 
-RunningMedian RM[4] = { a, b, c, d };
+RunningMedian *RM[4];  //  array of 4 pointers to RM objects
 
 
 void setup()
@@ -21,6 +17,11 @@ void setup()
   Serial.begin(115200);
   Serial.print("Running Median Version: ");
   Serial.println(RUNNING_MEDIAN_VERSION);
+
+  for (int i = 0; i < 4; i++)
+  {
+    RM[i] = new RunningMedian(3 + i*3);  // let the pointers point to a new RM object.
+  }
 }
 
 
@@ -28,13 +29,13 @@ void loop()
 {
   for (int i = 0; i < 4; i++)
   {
-    RM[i].add(random(100));
+    RM[i]->add(random(100));
   }
   for (int i = 0; i < 4; i++) 
   {
-    Serial.print(RM[i].getCount());
+    Serial.print(RM[i]->getCount());
     Serial.print("\t");
-    Serial.print(RM[i].getMedian());
+    Serial.print(RM[i]->getMedian());
     Serial.print("\t");
   }
   Serial.println();
