@@ -101,6 +101,6 @@ See examples.
 
 - improve documentation.
 - check for optimizations.
-  - get the median without (full) sorting.
+  - get the median without (full) sorting. QuickSelect()
 - move all code to .cpp file
 
