@@ -77,6 +77,13 @@ public:
   uint8_t getCount()   { return _count; };
   bool    isFull()     { return (_count == _size); }
 
+  //  EXPERIMENTAL  (might change in the future)
+  //  searchMode defines how the internal insertionSort works
+  //  can be used to optimize performance.
+  //  0 = LINEAR_SEARCH   1 = BINARY_SEARCH
+  void    setSearchMode(uint8_t searchMode = 0);
+  uint8_t getSearchMode();
+
 
 protected:
   boolean   _sorted;    //  _sortIdx{} is up to date
@@ -94,7 +101,8 @@ protected:
   float   _values[MEDIAN_MAX_SIZE];
   uint8_t _sortIdx[MEDIAN_MAX_SIZE];
 #endif
-  void sort();
+  void      sort();
+  uint8_t   _searchMode = 0;
 };
 
 

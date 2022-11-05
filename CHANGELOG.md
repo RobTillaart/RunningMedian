@@ -11,6 +11,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - Add CHANGELOG.md
 - optimized binary insertion sort - see issue #20 (idea thanks to acicuc)
 - add performance test sketch (to test sort efficiency)
+- add setSearchMode() for selecting fastest median search mode.  
+  EXPERIMENTAL, select between LINEAR or BINARY search.  
+
 
 ## [0.3.6} - 2022-06-06
 - bump version for platformio

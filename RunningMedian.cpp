@@ -165,7 +165,26 @@ float RunningMedian::predict(const uint8_t n)
 }
 
 
-//  binary insertion sort
+void RunningMedian::setSearchMode(uint8_t searchMode)
+{
+  if (searchMode == 1) _searchMode = 1;
+  else _searchMode = 0;
+}
+
+
+uint8_t RunningMedian::getSearchMode()
+{
+  return _searchMode;
+}
+
+
+////////////////////////////////////////////////////////////
+//
+//  PRIVATE
+//
+
+//  insertion sort - _searchMode = linear or binary.
+
 void RunningMedian::sort()
 {
   uint16_t lo   = 0;
@@ -178,27 +197,40 @@ void RunningMedian::sort()
     temp = _sortIdx[i];
     float f = _values[temp];
 
-    //  find insertion point with binary search
     //  handle special case f is smaller than all elements first.
+    //  only one compare needed, improves linear search too.
     if (f <= _values[_sortIdx[0]])
     {
       hi = 0;
     }
     else
     {
-      lo = 0;
-      hi = i;
-      //  be aware there might be duplicates
-      while (hi - lo > 1)
+      if (_searchMode == 0)
       {
-        mi = (lo + hi) / 2;
-        if (f < _values[_sortIdx[mi]])
+        hi = i;
+        //  find insertion point with linear search
+        while ((hi > 0) && (f < _values[_sortIdx[hi - 1]]))
         {
-          hi = mi;
+          hi--;
         }
-        else
+      }
+      else if (_searchMode == 1)
+      {
+        //  find insertion point with binary search
+        lo = 0;
+        hi = i;
+        //  be aware there might be duplicates
+        while (hi - lo > 1)
         {
-          lo = mi;
+          mi = (lo + hi) / 2;
+          if (f < _values[_sortIdx[mi]])
+          {
+            hi = mi;
+          }
+          else
+          {
+            lo = mi;
+          }
         }
       }
     }
@@ -217,14 +249,56 @@ void RunningMedian::sort()
   }
   _sorted = true;
 
-  //  verify sorted
+  // //  verify sorted
   // for (int i = 0; i < _count; i++)
   // {
-    // Serial.print(i);
+    // if (i%5 == 0) Serial.println();
     // Serial.print("\t");
-    // Serial.println(_values[_sortIdx[i]]);
+    // Serial.print(_values[_sortIdx[i]]);
   // }
+  // Serial.println("\n");
 }
+
+
+
+/*
+ split version of pre-0.3.7 sort - bit faster
+
+void RunningMedian::sort()
+{
+  // insertSort
+  for (uint16_t i = 1; i < _count; i++)
+  {
+    uint16_t hi = i;
+    uint16_t temp = _sortIdx[hi];
+    float f = _values[temp];
+    while ((hi > 0) && (f < _values[_sortIdx[hi - 1]]))
+    {
+      hi--;
+    }
+
+    //  move elements to make space
+    uint16_t k = i;
+    while (k > hi)
+    {
+      _sortIdx[k] = _sortIdx[k - 1];
+      k--;
+    }
+
+    //  insert at right spot.
+    _sortIdx[k] = temp;
+  }
+  _sorted = true;
+  //  //  verify sorted
+  // for (int i = 0; i < _count; i++)
+  // {
+    // if (i%5 == 0) Serial.println();
+    // Serial.print("\t");
+    // Serial.print(_values[_sortIdx[i]]);
+  // }
+  // Serial.println("\n");
+}
+*/
 
 
 /*
@@ -244,13 +318,14 @@ void RunningMedian::sort()
   }
   _sorted = true;
 
-  //  verify sorted
+  //  //  verify sorted
   // for (int i = 0; i < _count; i++)
   // {
-    // Serial.print(i);
+    // if (i%5 == 0) Serial.println();
     // Serial.print("\t");
-    // Serial.println(_values[_sortIdx[i]]);
+    // Serial.print(_values[_sortIdx[i]]);
   // }
+  // Serial.println("\n");
 }
 */
 

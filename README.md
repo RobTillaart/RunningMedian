@@ -92,6 +92,27 @@ This value is often interpolated.
 n must be smaller than **getSize()/2**.
 
 
+### SearchMode optimization
+
+Since 0.3.7 the internal sort has been optimized.
+It is now possible to select between LINEAR (=0) and BINARY (=1) insertion sort.
+Pre-0.3.7 used linear insertion sort, and the new linear version is slightly optimized.
+For larger internal arrays the performance gain of BINARY mode is substantial.
+
+- **void setSearchMode(uint8_t searchMode = 0)** 0 = linear, 1 = binary - see table below.
+Other values will set the searchMode to linear.
+- **uint8_t getSearchMode()** returns the set mode
+
+|  searchMode  |  value  | notes  |
+|:------------:|:-------:|:-------|
+|    LINEAR    |    0    |  fastest for smaller internal buffers (default)
+|    BINARY    |    1    |  faster for larger internal buffers
+
+Depends on the board / clock used where the methods are equally fast.
+
+Give it a try, and let me know your.
+
+
 ## Operation
 
 See examples.

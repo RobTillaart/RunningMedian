@@ -44,6 +44,10 @@ void setup()
   Serial.println(F(" floats."));
 #endif
 
+  samples.setSearchMode(0);
+  test1();
+
+  samples.setSearchMode(1);
   test1();
 
   Serial.println("\ndone..\n");
@@ -59,9 +63,16 @@ void test1()
   uint32_t stop  = 0;
   uint32_t total = 0;
 
+  samples.clear();
+  Serial.println();
   Serial.print(F("Allocated size = "));
   Serial.println(samples.getSize());
+  Serial.print(F("nr of elements = "));
+  Serial.println(samples.getCount());
+  Serial.print(F("    searchMode = "));
+  Serial.println(samples.getSearchMode());
   Serial.println();
+  delay(50);
 
   for (uint8_t i = 0; i < sourceSize; i++)
   {
