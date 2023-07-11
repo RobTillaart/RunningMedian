@@ -43,7 +43,7 @@ is large. For most applications a value much lower e.g. 19 is working well, and
 is performance wise O(100x) faster in sorting than 255 elements.
 
 
-### Note: Configurable Options
+#### Note: Configurable Options
 
 There are several options that can be configured via defines at compile time, those being:
 - **RUNNING_MEDIAN_USE_MALLOC**: bool
@@ -55,6 +55,18 @@ There are several options that can be configured via defines at compile time, th
 - **MEDIAN_MAX_SIZE**: uint8_t
   - Dynamic: Not used.
   - Static: The buffer stores at most this many items.
+
+
+#### Related
+
+- https://github.com/RobTillaart/Correlation
+- https://github.com/RobTillaart/GST - Golden standard test metrics
+- https://github.com/RobTillaart/Histogram
+- https://github.com/RobTillaart/RunningAngle
+- https://github.com/RobTillaart/RunningAverage
+- https://github.com/RobTillaart/RunningMedian
+- https://github.com/RobTillaart/statHelpers - combinations & permutations
+- https://github.com/RobTillaart/Statistic
 
 
 ## Interface
@@ -78,6 +90,7 @@ optionally replacing the oldest element if the buffer is full.
 - **float getAverage()** returns average of **all** the values in the internal buffer.
 - **float getAverage(uint8_t nMedian)** returns average of **the middle n** values. 
 This effectively removes noise from the outliers in the samples.
+The function is improved in 0.3.8 to correct a bias, see #22.
 - **float getHighest()** get the largest values in the buffer.
 - **float getLowest()** get the smallest value in the buffer.
 - **float getQuantile(const float quantile)** returns the Quantile value from the buffer. 
@@ -124,4 +137,5 @@ See examples.
 - check for optimizations.
   - get the median without (full) sorting. QuickSelect()
 - move all code to .cpp file
+
 
