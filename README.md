@@ -72,7 +72,7 @@ There are several options that can be configured via defines at compile time, th
 ## Interface
 
 
-### Constructor
+#### Constructor
 
 - **RunningMedian(const uint8_t size)** Constructor, dynamically allocates memory.
 - **~RunningMedian()** Destructor.
@@ -81,7 +81,7 @@ There are several options that can be configured via defines at compile time, th
 - **bool isFull()** returns true if the internal buffer is 100% filled.
 
 
-### Base functions
+#### Base functions
 
 - **clear()** resets internal buffer and variables, effectively empty the buffer.
 - **add(const float value)** adds a new value to internal buffer, 
@@ -91,8 +91,8 @@ optionally replacing the oldest element if the buffer is full.
 - **float getAverage(uint8_t nMedian)** returns average of **the middle n** values. 
 This effectively removes noise from the outliers in the samples.
 The function is improved in 0.3.8 to correct a bias, see #22.
-- **float getMedianAverage(uint8_t nMedian)** same as above, 
-except it compensates for alignment bias, see #22.
+- **float getMedianAverage(uint8_t nMedian)** almost same as above, 
+except it compensates for alignment bias, see #22. 
 This is done by adjusting the nMedian parameter (-1 or +1) if needed.
 - **float getHighest()** get the largest values in the buffer.
 - **float getLowest()** get the smallest value in the buffer.
@@ -100,7 +100,29 @@ This is done by adjusting the nMedian parameter (-1 or +1) if needed.
 This value is often interpolated.
 
 
-### Less used functions
+#### getMedianAverage(nMedian)
+ 
+**getAverage(nMedian)** and **getMedianAverage(uint8_t nMedian)** differ.
+When nMedian is odd and count is even or vice versa, the middle N are not 
+perfectly in the middle. 
+By auto-adjusting nMedian (-1 +1) this balance is restored.
+
+Assume an internal size of 7 elements \[0..6] then 
+- **getAverage(4)** will average element 1, 2, 3, 4
+- **getMedianAverage(4)** will adjust nMedian and average element 2, 3, 4.
+
+The example **RunningMedian_getMedianAverage.ino** shows the difference.
+
+The implementation of **getMedianAverage(uint8_t nMedian)** is experimental 
+and might change in the future. 
+Idea is taking top and bottom elements only for 50% if needed, however that 
+implies at least 2 extra float multiplications.
+
+It is possible that the name **getMedianAverage(uint8_t nMedian)**
+will change in the future to be more descriptive.
+
+
+#### Less used functions
 
 - **float getElement(const uint8_t n)** returns the n'th element from the values in time order.
 - **float getSortedElement(const uint8_t n)** returns the n'th element from the values in size order (sorted ascending).
@@ -108,7 +130,7 @@ This value is often interpolated.
 n must be smaller than **getSize()/2**.
 
 
-### SearchMode optimization
+#### SearchMode optimization
 
 Since 0.3.7 the internal sort has been optimized.
 It is now possible to select between LINEAR (=0) and BINARY (=1) insertion sort.

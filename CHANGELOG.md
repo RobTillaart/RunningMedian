@@ -7,8 +7,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 
 ## [0.3.8] - 2023-07-11
-- improved **getAverage(nMedians)** by removing bias - #22
+- add **getMedianAverage(nMedians)**  removing bias - #22
   - thanks to Peter Kowald
+- add example **RunningMedian_getMedianAverage.ino**
 - extended performance test
 - update readme.md
 
