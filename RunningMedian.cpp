@@ -104,8 +104,31 @@ float RunningMedian::getAverage()
 }
 
 
-//  nMedians is the spread, or the middle N
 float RunningMedian::getAverage(uint8_t nMedians)
+{
+  if ((_count == 0) || (nMedians == 0)) return NAN;
+
+//  when filling the array for first time
+  if (_count < nMedians) nMedians = _count;
+
+  uint8_t start = ((_count - nMedians) / 2);
+  uint8_t stop = start + nMedians;
+
+  if (_sorted == false) sort();
+
+  float sum = 0;
+  for (uint8_t i = start; i < stop; i++)
+  {
+    sum += _values[_sortIdx[i]];
+  }
+  return sum / nMedians;
+}
+
+
+//  nMedians is the spread, or the middle N
+//  this version compensated for bias #22
+
+float RunningMedian::getMedianAverage(uint8_t nMedians)
 {
   //  handle special cases.
   if ((_count == 0) || (nMedians == 0)) return NAN;

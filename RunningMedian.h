@@ -61,6 +61,9 @@ public:
   float   getAverage();
   //  returns average of the middle nMedian values, removes noise from outliers
   float   getAverage(uint8_t nMedian);
+  //  returns average of the middle nMedian values, removes noise from outliers
+  //  Bias compensated see #22.
+  float   getMedianAverage(uint8_t nMedian);
 
   float   getHighest() { return getSortedElement(_count - 1); };
   float   getLowest()  { return getSortedElement(0); };

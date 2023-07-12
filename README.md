@@ -91,6 +91,9 @@ optionally replacing the oldest element if the buffer is full.
 - **float getAverage(uint8_t nMedian)** returns average of **the middle n** values. 
 This effectively removes noise from the outliers in the samples.
 The function is improved in 0.3.8 to correct a bias, see #22.
+- **float getMedianAverage(uint8_t nMedian)** same as above, 
+except it compensates for alignment bias, see #22.
+This is done by adjusting the nMedian parameter (-1 or +1) if needed.
 - **float getHighest()** get the largest values in the buffer.
 - **float getLowest()** get the smallest value in the buffer.
 - **float getQuantile(const float quantile)** returns the Quantile value from the buffer. 
