@@ -71,6 +71,7 @@ There are several options that can be configured via defines at compile time, th
 - https://github.com/RobTillaart/RunningAngle
 - https://github.com/RobTillaart/RunningAverage
 - https://github.com/RobTillaart/RunningMedian
+- https://github.com/RobTillaart/RunningMinMax
 - https://github.com/RobTillaart/statHelpers - combinations & permutations
 - https://github.com/RobTillaart/Statistic
 - https://github.com/RobTillaart/Student
