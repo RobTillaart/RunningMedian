@@ -33,6 +33,8 @@ the running median in the next steps in advance.
 - Running median is slower as one needs to keep the values in timed order 
 to remove the oldest and keep them sorted to be able to select the median.
 
+Feedback, as always, is welcome.
+
 
 ### Note: MEDIAN_MAX_SIZE
 
